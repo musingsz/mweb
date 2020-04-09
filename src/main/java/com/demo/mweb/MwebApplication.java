@@ -1,6 +1,7 @@
 package com.demo.mweb;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableDiscoveryClient
 @RestController
 public class MwebApplication {
+public static String DATE = new Date().toGMTString();
 
 public static void main(String[] args) {
 SpringApplication.run(MwebApplication.class, args);
@@ -27,6 +29,11 @@ SpringApplication.run(MwebApplication.class, args);
 @GetMapping("/hello")
 public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
 return String.format("Hello, %s!", name);
+}
+
+@GetMapping("/uptime")
+public String uptime() {
+return String.format("Uptime : %s!", DATE);
 }
 
 
