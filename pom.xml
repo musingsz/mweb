@@ -10,7 +10,9 @@
 	</parent>
 	<groupId>com.demo</groupId>
 	<artifactId>mweb</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
+    <packaging>jar</packaging>
+	
 	<name>mweb</name>
 	<description>mweb Project</description>
 
@@ -19,7 +21,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Hoxton.SR1</spring-cloud.version>
-        <docker.image.prefix>eukaserver</docker.image.prefix>
+        <docker.image.prefix>mweb</docker.image.prefix>
 	</properties>
 	
 	<dependencies>
@@ -67,7 +69,12 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-    <plugin>
+
+
+	
+	<build>
+		<plugins>
+		<plugin>
          <groupId>com.spotify</groupId>
          <artifactId>docker-maven-plugin</artifactId>
          <version>1.0.0</version>
@@ -82,11 +89,7 @@
                </resource>
             </resources>
          </configuration>
-      </plugin>
-
-	
-	<build>
-		<plugins>
+         </plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

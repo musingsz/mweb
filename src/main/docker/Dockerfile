@@ -7,5 +7,5 @@ RUN mvn package
 FROM openjdk:8-jre-alpine
 
 WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/mweb-0.0.1-SNAPSHOT.jar /app/
-ENTRYPOINT ["java", "-jar", "mweb-0.0.1-SNAPSHOT.jar"]
+COPY --from=MAVEN_BUILD /build/target/mweb-0.0.2-SNAPSHOT.jar /app/
+ENTRYPOINT ["java", "-jar", "mweb-0.0.2-SNAPSHOT.jar"]
