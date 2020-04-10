@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@EnableDiscoveryClient
 @RestController
+@EnableEurekaClient
+
 public class MwebApplication {
 public static String DATE = new Date().toGMTString();
 
@@ -33,9 +35,13 @@ return String.format("Hello, %s!", name);
 
 @GetMapping("/uptime")
 public String uptime() {
-return String.format("Uptime : %s!", DATE);
+return String.format("uptime : %s!", DATE);
 }
 
+@GetMapping("/error")
+public String error() {
+return String.format("error : %s!", DATE);
+}
 
 @Autowired
 private DiscoveryClient discoveryClient;
